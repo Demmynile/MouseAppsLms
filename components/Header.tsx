@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  SignedIn,
-  SignedOut,
+  Show,
   SignInButton,
   UserButton,
   useAuth,
@@ -50,21 +49,21 @@ export function Header() {
     <nav className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-5 max-w-7xl mx-auto">
       {/* Logo - links to dashboard when logged in, home when logged out */}
       <div>
-        <SignedIn>
+        <Show when="signed-in">
           <Link href="/dashboard" className="flex items-center gap-3 group">
             <Logo />
           </Link>
-        </SignedIn>
-        <SignedOut>
+        </Show>
+        <Show when="signed-out">
           <Link href="/" className="flex items-center gap-3 group">
             <Logo />
           </Link>
-        </SignedOut>
+        </Show>
       </div>
 
       {/* Center Navigation - absolute positioning for perfect center on desktop */}
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <SignedOut>
+        <Show when="signed-out">
           <div className="flex items-center gap-8 text-sm text-zinc-400">
             {loggedOutLinks.map((link) => (
               <Link
@@ -76,9 +75,9 @@ export function Header() {
               </Link>
             ))}
           </div>
-        </SignedOut>
+        </Show>
 
-        <SignedIn>
+        <Show when="signed-in">
           <div className="flex items-center gap-1">
             {loggedInLinks.map((link) => {
               const Icon = link.icon;
@@ -103,12 +102,12 @@ export function Header() {
               );
             })}
           </div>
-        </SignedIn>
+        </Show>
       </div>
 
       {/* Right section */}
       <div className="flex items-center gap-3">
-        <SignedOut>
+        <Show when="signed-out">
           {/* Mobile: Dropdown menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="md:hidden">
@@ -150,9 +149,9 @@ export function Header() {
               Start Learning
             </Button>
           </Link>
-        </SignedOut>
+        </Show>
 
-        <SignedIn>
+        <Show when="signed-in">
           {/* Mobile: Dropdown menu next to user profile */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="md:hidden">
@@ -200,7 +199,7 @@ export function Header() {
               },
             }}
           />
-        </SignedIn>
+        </Show>
       </div>
     </nav>
   );
