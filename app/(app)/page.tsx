@@ -1,3 +1,4 @@
+import { MouseAppsLmsLogo } from "@/components/MouseAppsLmsLogo";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
@@ -6,7 +7,6 @@ import {
   ArrowRight,
   Play,
   BookOpen,
-  Code2,
   Rocket,
   Crown,
   CheckCircle2,
@@ -406,10 +406,7 @@ export default async function Home() {
         <footer className="px-6 lg:px-12 py-12 border-t border-zinc-800/50 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center">
-                <Code2 className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-bold">Sonny&apos;s Academy</span>
+              <MouseAppsLmsLogo size="sm" />
             </div>
             <div className="flex items-center gap-8 text-sm text-zinc-500">
               <Link href="#" className="hover:text-white transition-colors">

@@ -1,3 +1,4 @@
+import { MouseAppsLmsLogo } from "@/components/MouseAppsLmsLogo";
 import Link from "next/link";
 import { PricingTable } from "@clerk/nextjs";
 import {
@@ -5,7 +6,6 @@ import {
   CheckCircle2,
   Sparkles,
   Loader2,
-  Code2,
 } from "lucide-react";
 import { TIER_FEATURES, getTierColorClasses } from "@/lib/constants";
 import { Header } from "@/components/Header";
@@ -205,10 +205,7 @@ export default function PricingPage() {
       <footer className="relative z-10 px-6 lg:px-12 py-12 border-t border-zinc-800/50 max-w-7xl mx-auto mt-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center">
-              <Code2 className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-bold">Sonny&apos;s Academy</span>
+            <MouseAppsLmsLogo size="sm" />
           </div>
           <div className="flex items-center gap-8 text-sm text-zinc-500">
             <Link href="#" className="hover:text-white transition-colors">
