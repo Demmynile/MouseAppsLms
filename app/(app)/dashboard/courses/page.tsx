@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { Header } from "@/components/Header";
 import { CourseCard } from "@/components/courses";
+import type { DASHBOARD_COURSES_QUERYResult } from "@/sanity.types";
 import { sanityFetch } from "@/sanity/lib/live";
 import { DASHBOARD_COURSES_QUERY } from "@/sanity/lib/queries";
 
@@ -19,13 +20,15 @@ export default async function MyCoursesPage() {
   });
 
   // Calculate completion for each course and filter to started ones
-  type Course = (typeof courses)[number];
+  const typedCourses = courses as DASHBOARD_COURSES_QUERYResult;
+
+  type Course = DASHBOARD_COURSES_QUERYResult[number];
   type CourseWithProgress = Course & {
     totalLessons: number;
     completedLessons: number;
   };
 
-  const startedCourses = courses.reduce<CourseWithProgress[]>((acc, course) => {
+  const startedCourses = typedCourses.reduce<CourseWithProgress[]>((acc, course) => {
     const { total, completed } = (course.modules ?? []).reduce(
       (stats, m) =>
         (m.lessons ?? []).reduce(
